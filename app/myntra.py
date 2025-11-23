@@ -126,7 +126,7 @@ page = st.sidebar.radio(
 col1, col2 = st.columns([1, 8])
 
 with col1:
-    st.image("myntra_logo-removebg-preview.png", width=80)
+    st.image("app/assets/myntra_logo-removebg-preview.png", width=80)
 
 with col2:
     st.markdown(
