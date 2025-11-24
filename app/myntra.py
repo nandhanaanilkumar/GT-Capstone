@@ -127,13 +127,14 @@ st.sidebar.markdown("---")
 linkedin_url = "https://www.linkedin.com/in/ann-maria-14ba92256"
 
 st.sidebar.markdown(
-    f"""
-    <a href="{linkedin_url}" target="_blank">
-        <img src="app/assets/linkedin-removebg-preview.png"
-             width="35" style="margin-left: 5px;">
-    </a>
-    """,
-    unsafe_allow_html=True
+    st.image("app/assets/myntra_logo-removebg-preview.png", width=80)
+    # f"""
+    # <a href="{linkedin_url}" target="_blank">
+    #     <img src="app/assets/linkedin-removebg-preview.png"
+    #          width="35" style="margin-left: 5px;">
+    # </a>
+    # """,
+    # unsafe_allow_html=True
 )
 
 # --------------------------------------------------
