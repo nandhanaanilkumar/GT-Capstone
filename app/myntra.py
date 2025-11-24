@@ -332,26 +332,44 @@ elif page == "📊 EDA":
         else:
            st.info("No categorical columns found (URL removed).")
 
-
         # ====================================================
-        # 4️⃣ DYNAMIC SCATTER PLOT
+        # 4️⃣ DYNAMIC SCATTER PLOT (With Trendline + Auto Inference)
         # ====================================================
-        st.subheader("Scatter Plot (Dynamic)")
+        st.subheader("Scatter Plot (Dynamic - Trendline + Auto Inference)")
 
         if len(numeric_cols) >= 2:
             col_x = st.selectbox("Select X-axis numeric column", numeric_cols)
             col_y = st.selectbox("Select Y-axis numeric column", numeric_cols)
 
+            # Convert to numeric and drop missing values
+            df[col_x] = pd.to_numeric(df[col_x], errors="coerce")
+            df[col_y] = pd.to_numeric(df[col_y], errors="coerce")
+            clean_df = df[[col_x, col_y]].dropna()
+
+            x = clean_df[col_x]
+            y = clean_df[col_y]
+
+            # ------------------ Scatter Plot + Trendline ------------------
             fig, ax = plt.subplots(figsize=(5, 4))
-            ax.scatter(df[col_x], df[col_y],color = "#073c62")
+            ax.scatter(x, y, color="#073c62", alpha=0.6)
+
+            # Trendline
+            z = np.polyfit(x, y, 1)
+            p = np.poly1d(z)
+            ax.plot(x, p(x), color="red", linewidth=2)
+
             ax.set_xlabel(col_x)
             ax.set_ylabel(col_y)
-            ax.set_title(f"Scatter Plot: {col_x} vs {col_y}")
+            ax.set_title(f"Scatter Plot with Trendline: {col_x} vs {col_y}")
+
             st.pyplot(fig)
 
-            # 🔍 AUTOMATIC INFERENCE USING CORRELATION
-            corr_val = df[col_x].corr(df[col_y])
+            # ====================================================
+            # 🔍 AUTOMATIC SCATTER PLOT INFERENCE
+            # ====================================================
+            corr_val = x.corr(y)
 
+            # Relationship type from correlation
             if corr_val > 0.7:
                 rel = "Strong Positive Relationship"
             elif corr_val > 0.3:
@@ -367,13 +385,44 @@ elif page == "📊 EDA":
             else:
                 rel = "No Relationship"
 
+            # Trendline slope meaning
+            slope = z[0]
+            if slope > 0:
+                direction = "⬆ As X increases, Y tends to increase."
+            elif slope < 0:
+                direction = "⬇ As X increases, Y tends to decrease."
+            else:
+                direction = "→ No visible upward or downward trend."
+
+            # Strength explanation
+            if abs(corr_val) > 0.7:
+                strength = "The relationship is strong and clearly visible."
+            elif abs(corr_val) > 0.3:
+                strength = "The relationship is moderate."
+            elif abs(corr_val) > 0:
+                strength = "The relationship is weak and scattered."
+            else:
+                strength = "There is no relationship."
+
+            # Plain English interpretation
+            if corr_val > 0:
+                human_text = f"When **{col_x}** increases, **{col_y}** also tends to increase."
+            elif corr_val < 0:
+                human_text = f"When **{col_x}** increases, **{col_y}** tends to decrease."
+            else:
+                human_text = f"Changes in **{col_x}** do not affect **{col_y}**."
+
+            # Display inference
             st.markdown(f"""
-            ### 📘 Inference:
-            - Correlation between **{col_x}** and **{col_y}**: **{corr_val:.2f}**
-            - Relationship type: **{rel}**
+            ### 📘 Automatic Inference:
+            - **Correlation Value:** {corr_val:.2f}  
+            - **Relationship Type:** {rel}  
+            - **Trendline Direction:** {direction}  
+            - **Strength of Relationship:** {strength}  
+            - **Interpretation:** {human_text}  
             """)
         else:
-            st.info("At least two numeric columns are required.")
+            st.info("At least two numeric columns are required to create a scatter plot.")
 
         # ====================================================
         # 5️⃣ BOX PLOT (NEW)
