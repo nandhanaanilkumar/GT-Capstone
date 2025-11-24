@@ -129,7 +129,7 @@ linkedin_url = "https://www.linkedin.com/in/ann-maria-14ba92256"
 st.sidebar.markdown(
     f"""
     <a href="{linkedin_url}" target="_blank">
-        <img src="app/linkedin-removebg-preview.png"
+        <img src="app/assets/linkedin-removebg-preview.png"
              width="35" style="margin-left: 5px;">
     </a>
     """,
