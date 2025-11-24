@@ -687,12 +687,12 @@ elif page == "👥 Team":
 
     st.markdown("""
     ### 🧑‍💻 Team Behind *Myntra Sales Analyzer*
-
-    **1️⃣ Ann Maria Anto**  
-    **2️⃣ Nandhana Anilkumar**  
-    **3️⃣ Aidan Chacko Roby**  
-    **4️⃣ Gaury Parvathy**  
-    **5️⃣ Ravisankar**  
+**1️⃣ Ann Maria Anto**  
+**2️⃣ Nandhana Anilkumar**  
+**3️⃣ Haripriya G Anil**  
+**4️⃣ Aidan Chacko Roby**  
+**5️⃣ Gaury Parvathy**  
+**6️⃣ Ravisankar**  
 
     ---
 
