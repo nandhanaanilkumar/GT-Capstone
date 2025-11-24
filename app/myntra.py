@@ -123,7 +123,7 @@ if uploaded_file:
 st.sidebar.markdown("---")
 page = st.sidebar.radio(
     "📌 Navigate",
-    ["📄 Dataset Overview","🧹 Data Cleaning", "📊 EDA", "🤖 Model Training", "🔮 Prediction"],
+    ["📄 Dataset Overview","🧹 Data Cleaning", "📊 EDA", "🤖 Model Training", "🔮 Prediction", "👥 Team"],
 )
 # --------------------------------------------------
 # 📌 LINKEDIN LOGO AT BOTTOM
@@ -679,3 +679,29 @@ elif page == "🔮 Prediction":
     except Exception as e:
         st.error("⚠ Model not trained yet. Please train the model first.")
         st.error(str(e))
+        # ====================================================
+# 👥 TEAM MEMBERS PAGE
+# ====================================================
+elif page == "👥 Team":
+    st.header("👥 Project Team Members")
+
+    st.markdown("""
+    ### 🧑‍💻 Team Behind *Myntra Sales Analyzer*
+
+    **1️⃣ Ann Maria Anto**  
+    **2️⃣ Nandhana Anilkumar**  
+    **3️⃣ Aidan Chacko Roby**  
+    **4️⃣ Gaury Parvathy**  
+    **5️⃣ Ravisankar**  
+
+    ---
+
+    ### 🎯 About the Team  
+    This team collaboratively built the **Myntra Sales Analyzer** using  
+    Streamlit, Python, Machine Learning, and Data Visualization techniques  
+    to create an interactive end-to-end data science application.
+
+    """)
+
+
+
