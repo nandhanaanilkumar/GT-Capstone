@@ -140,7 +140,7 @@ try:
         f"""
         <div style="display: flex; justify-content: center; padding-top: 10px;">
         <a href="{linkedin_url}" target="_blank">
-            <img src="data:image/png;base64,{img_base64}" width="40" height="50" style="margin-left:10px;">
+            <img src="data:image/png;base64,{img_base64}" width="60" height="60">
         </a>
         </div>
         """,
