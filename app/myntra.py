@@ -12,6 +12,12 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.linear_model import LinearRegression
 
 st.set_page_config(page_title="Myntra Sales Analyzer", layout="wide")
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
 # --------------------------------------------------
 # 🎨 CUSTOM PROFESSIONAL THEME (Myntra Colors)
@@ -125,17 +131,21 @@ page = st.sidebar.radio(
 st.sidebar.markdown("---")
 
 linkedin_url = "https://www.linkedin.com/in/ann-maria-14ba92256"
+image_path = "app/assets/linkedin-removebg-preview.png"
 
-st.sidebar.markdown(
-    st.image("app/assets/myntra_logo-removebg-preview.png", width=80)
-    # f"""
-    # <a href="{linkedin_url}" target="_blank">
-    #     <img src="app/assets/linkedin-removebg-preview.png"
-    #          width="35" style="margin-left: 5px;">
-    # </a>
-    # """,
-    # unsafe_allow_html=True
-)
+try:
+    img_base64 = get_base64_image(image_path)
+
+    st.sidebar.markdown(
+        f"""
+        <a href="{linkedin_url}" target="_blank">
+            <img src="data:image/png;base64,{img_base64}" width="40" style="margin-left:10px;">
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
+except:
+    st.sidebar.error("❌ Logo image not found. Check your file path.")
 
 # --------------------------------------------------
 # 🛍️ HEADER WITH LOGO + TITLE (INLINE)
