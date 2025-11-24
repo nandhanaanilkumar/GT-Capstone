@@ -138,9 +138,11 @@ try:
 
     st.sidebar.markdown(
         f"""
+        <div style="display: flex; justify-content: center; padding-top: 10px;">
         <a href="{linkedin_url}" target="_blank">
             <img src="data:image/png;base64,{img_base64}" width="40" style="margin-left:10px;">
         </a>
+        </div>
         """,
         unsafe_allow_html=True
     )
