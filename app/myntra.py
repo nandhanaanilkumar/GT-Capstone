@@ -694,14 +694,6 @@ elif page == "👥 Team":
 **5️⃣ Gaury Parvathy**  
 **6️⃣ Ravisankar**  
 
-    ---
-
-    ### 🎯 About the Team  
-    This team collaboratively built the **Myntra Sales Analyzer** using  
-    Streamlit, Python, Machine Learning, and Data Visualization techniques  
-    to create an interactive end-to-end data science application.
-
     """)
-
 
 
